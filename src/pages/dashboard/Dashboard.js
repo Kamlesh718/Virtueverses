@@ -1,14 +1,17 @@
+import { CategoryAlt } from "styled-icons/boxicons-solid";
+import { PersonFillGear } from "styled-icons/bootstrap";
+import EditUsers from "./EditUsers";
 import { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Plus } from "styled-icons/bootstrap";
-import { CategoryAlt } from "styled-icons/boxicons-solid";
 import { Close } from "styled-icons/evil";
 import { Menu } from "styled-icons/ionicons-outline";
 import { ManageAccounts, PostAdd } from "styled-icons/material";
 import { Bloglovin } from "styled-icons/simple-icons";
-import EditUsers from "./EditUsers";
+import { useUserData } from "../../ui/useUserData";
+import { Profile } from "styled-icons/remix-line";
 
 function Dashboard() {
+  const { isAdmin } = useUserData();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -56,19 +59,32 @@ function Dashboard() {
                 {<Bloglovin size="25" />}
               </span>
             </Link>
-
             <Link
-              to="manageuser"
+              to="profile"
               className="p-5 font-semibold rounded-sm bg-violet-950 text-violet-200"
             >
               <span className="max-sm:hidden hover:font-bold transition-all drop-shadow-md hover:drop-shadow-xl text-violet-200 hover:text-violet-100 ">
-                Manage Users
+                Profile
               </span>
               <span className="sm:hidden md:hidden text-violet-200 hover:text-violet-100">
-                {<ManageAccounts size="25" />}
+                {<PersonFillGear size="25" />}
               </span>
             </Link>
-            <Link
+
+            {/* {isAdmin ? (
+              <Link
+                to="manageuser"
+                className="p-5 font-semibold rounded-sm bg-violet-950 text-violet-200"
+              >
+                <span className="max-sm:hidden hover:font-bold transition-all drop-shadow-md hover:drop-shadow-xl text-violet-200 hover:text-violet-100 ">
+                  Manage Users
+                </span>
+                <span className="sm:hidden md:hidden text-violet-200 hover:text-violet-100">
+                  {<ManageAccounts size="25" />}
+                </span>
+              </Link>
+            ) : null} */}
+            {/* <Link
               to="addcategory"
               className="p-5 font-semibold rounded-sm bg-violet-950 text-violet-200"
             >
@@ -89,7 +105,7 @@ function Dashboard() {
               <span className="sm:hidden md:hidden text-violet-200 hover:text-violet-100">
                 {<CategoryAlt size="25" />}
               </span>
-            </Link>
+            </Link> */}
           </aside>
         </div>
 

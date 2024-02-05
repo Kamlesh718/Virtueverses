@@ -14,12 +14,15 @@ import Login from "./pages/authentication/Login";
 import AddPost from "./pages/dashboard/AddPost";
 import ManagePost from "./pages/dashboard/ManagePost";
 
+// import AddCategory from "./pages/dashboard/AddCategory";
+// import ManageCategory from "./pages/dashboard/ManageCategory";
+// import EditCategory from "./pages/dashboard/EditCategory";
+
 import ManageUsers from "./pages/dashboard/ManageUsers";
-import AddCategory from "./pages/dashboard/AddCategory";
-import ManageCategory from "./pages/dashboard/ManageCategory";
 import EditPost from "./pages/dashboard/EditPost";
 import EditUsers from "./pages/dashboard/EditUsers";
-import EditCategory from "./pages/dashboard/EditCategory";
+import ProtectedRoute from "./ui/ProtectedRoute";
+import Profile from "./pages/dashboard/Profile";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,61 +34,61 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<AppLayout />}>
-              <Route index element={<Homepage />} />
-              <Route path="singleblog/:id" element={<SingleBlog />} />
-              <Route path="blogs" element={<Blogs />} />
-              <Route path="about" element={<About />} />
-              <Route path="dashboard" element={<Dashboard />}>
-                {/* Automatically navigate to "dashboard/addpost" */}
-                <Route index element={<Navigate replace to="addpost" />} />
-                <Route path="addpost" element={<AddPost />} />
-                <Route path="managepost" element={<ManagePost />}>
-                  <Route path="editpost/:userId" element={<EditPost />} />
-                </Route>
-                <Route path="manageuser" element={<ManageUsers />}>
-                  <Route path="edituser/:userId" element={<EditUsers />} />
-                </Route>
-                <Route path="addcategory" element={<AddCategory />} />
-                <Route path="managecategory" element={<ManageCategory />}>
-                  <Route
-                    path="editcategory/:userId"
-                    element={<EditCategory />}
-                  />
-                </Route>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Homepage />} />
+
+            <Route path="singleblog/:id" element={<SingleBlog />} />
+            <Route path="blogs" element={<Blogs />} />
+            <Route path="about" element={<About />} />
+            <Route path="dashboard" element={<Dashboard />}>
+              {/* Automatically navigate to "dashboard/addpost" */}
+              <Route index element={<Navigate replace to="addpost" />} />
+              <Route path="addpost" element={<AddPost />} />
+              <Route path="managepost" element={<ManagePost />}>
+                <Route path="editpost/:userId" element={<EditPost />} />
               </Route>
+              <Route path="manageuser" element={<ManageUsers />}>
+                <Route path="edituser/:userId" element={<EditUsers />} />
+              </Route>
+              <Route path="profile" element={<Profile />} />
             </Route>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </BrowserRouter>
-        <Toaster
-          position="top-center"
-          gutter={12}
-          containerStyle={{ margin: "8px" }}
-          toastOptions={{
-            success: {
-              duration: 3000,
-            },
-            error: {
-              duration: 5000,
-            },
-            style: {
-              fontSize: "16px",
-              maxWidth: "500px",
-              padding: "16px 24px",
-              background: "#210c41",
-              color: "#a77ee8",
-            },
-          }}
-        />
-      </QueryClientProvider>
-    </>
+          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
+      <Toaster
+        position="top-center"
+        gutter={12}
+        containerStyle={{ margin: "8px" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            background: "#210c41",
+            color: "#a77ee8",
+          },
+        }}
+      />
+    </QueryClientProvider>
   );
 }
 

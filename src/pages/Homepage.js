@@ -1,11 +1,28 @@
 import { ChatLeftHeart, Stars } from "styled-icons/bootstrap";
 import { QuillPen } from "styled-icons/remix-line";
 import FeaturedBlog from "../ui/FeaturedBlog";
-import { blogs } from "../blogsTempData";
+// import { blogs } from "../blogsTempData";
+
+import { useFetchPosts } from "./dashboard/hooks/useFetchPosts";
+import { SyncLoader } from "react-spinners";
 
 function Homepage() {
+  const { posts, isLoading, error } = useFetchPosts();
+
+  if (isLoading)
+    return (
+      <div className="h-[100vh] bg-violet-200 flex items-center justify-center">
+        <SyncLoader size={30} color="#210c41" />
+      </div>
+    );
+
+  if (error) {
+    console.error("Error fetching data:", posts.error);
+    return <p>Error fetching data. Please try again.</p>;
+  }
+
   const slogan = "Where Virtue Unveils Its Verses";
-  const blogsData = blogs;
+
   return (
     <div className="mb-16">
       <h1 className="font-bold text-lg flex justify-center p-3 text-violet-950 font-mono tracking-normal hover:tracking-wider transition-all outline outline-violet-300 outline-1 sm:text-4xl md:max-lg:text-2xl  ">
@@ -26,7 +43,7 @@ function Homepage() {
       </h2>
 
       <div className="flex  justify-center">
-        <FeaturedBlog blogs={blogsData} numberOfBlogsToDisplay={9} />
+        <FeaturedBlog blogs={posts} numberOfBlogsToDisplay={9} />
       </div>
     </div>
   );

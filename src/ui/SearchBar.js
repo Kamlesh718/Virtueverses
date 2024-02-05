@@ -1,13 +1,12 @@
 import { useSearchParams } from "react-router-dom";
 
-function SearchBar() {
+function SearchBar({ setSearchTerm }) {
   const [search, setSearch] = useSearchParams("");
 
   function handleClick(e) {
-    e.preventDefault();
-    if (e.target.value === null) search.set(null);
-    search.set("search", e.target.value);
-    setSearch(search);
+    const searchTerm = e.target.value;
+    setSearchTerm(searchTerm);
+    setSearch("search", searchTerm);
   }
 
   return (

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { insertCategories } from "../../services/apiCategories";
 
 function AddCategory() {
   const [category, setCategory] = useState("");
@@ -15,7 +16,6 @@ function AddCategory() {
   const handleDescription = function (e) {
     setDescription(e.target.value);
   };
-  console.log(category, description);
   return (
     <>
       <h1 className="text-xl sm:text-2xl font-bold text-violet-200 ">

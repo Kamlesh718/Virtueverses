@@ -1,9 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Comment } from "styled-icons/boxicons-regular";
 import "../../src/index.css";
+import { useAddComments } from "../pages/dashboard/hooks/useAddComments";
+import { useUserData } from "./useUserData";
+import { useFetchComments } from "../pages/dashboard/hooks/useFetchComments";
+import { SyncLoader } from "react-spinners";
+import { useQueryClient } from "@tanstack/react-query";
+import { Delete } from "styled-icons/material-rounded";
+import { useDeleteComment } from "../pages/dashboard/hooks/useDeleteComment";
 
-function Comments() {
+function Comments({ post_id }) {
   const [comments, setComments] = useState("");
+  const { userId, fullName } = useUserData();
+  const { addComment, isLoading: addingComments } = useAddComments();
+  const { commentsFetch, isLoading: loadingComments } = useFetchComments();
+  const { deleteComment, isLoading: deletingComments } = useDeleteComment();
+  const queryClient = useQueryClient();
+
+  const commentsss = commentsFetch || [];
 
   const handleChange = function (e) {
     setComments(e.target.value);
@@ -11,9 +25,36 @@ function Comments() {
 
   const handleSubmit = function (e) {
     e.preventDefault();
+    const commentData = {
+      post_id,
+      user_id: userId,
+      content: comments,
+      fullName,
+    };
+    addComment(commentData, {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["comments"] });
+      },
+    });
+    setComments("");
   };
-  console.log(comments);
 
+  const handleDelete = function (id) {
+    deleteComment({ id });
+  };
+
+  if (loadingComments)
+    return (
+      <div className="h-[100vh] bg-violet-200 flex items-center justify-center">
+        <SyncLoader size={30} color="#210c41" />
+      </div>
+    );
+  if (addingComments)
+    return (
+      <div className="h-[100vh] bg-violet-200 flex items-center justify-center">
+        <SyncLoader size={30} color="#210c41" />
+      </div>
+    );
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center sm:p-20 py-20 px-4">
@@ -38,32 +79,35 @@ function Comments() {
         </form>
         <div className=" overflow-y-scroll h-[40vh] ">
           <ul>
-            <li className="p-2 my-2 bg-violet-800 text-violet-300 rounded-lg">
-              Best Article ever seen! Best Article ever seen! Best Article ever
-              seen! Best Article ever seen! Best Article ever seen!
-              <br />
-              <span className="px-3 font-bold text-violet-200"> - Kamlesh</span>
-            </li>
-            <li className="p-3 my-2 bg-violet-800 text-violet-300 rounded-lg">
-              Best Article ever seen! Best Article ever seen! Best Article ever
-              seen! Best Article ever seen! Best Article ever seen!
-              <span className="px-3 font-bold text-violet-200"> - Kamlesh</span>
-            </li>
-            <li className="p-3 my-2 bg-violet-800 text-violet-300 rounded-lg">
-              Best Article ever seen! Best Article ever seen! Best Article ever
-              seen! Best Article ever seen! Best Article ever seen!
-              <span className="px-3 font-bold text-violet-200"> - Kamlesh</span>
-            </li>
-            <li className="p-3 my-2 bg-violet-800 text-violet-300 rounded-lg">
-              Best Article ever seen! Best Article ever seen! Best Article ever
-              seen! Best Article ever seen! Best Article ever seen!
-              <span className="px-3 font-bold text-violet-200"> - Kamlesh</span>
-            </li>
-            <li className="p-3 my-2 bg-violet-800 text-violet-300 rounded-lg">
-              Best Article ever seen! Best Article ever seen! Best Article ever
-              seen! Best Article ever seen! Best Article ever seen!
-              <span className="px-3 font-bold text-violet-200"> - Kamlesh</span>
-            </li>
+            {loadingComments ? (
+              <SyncLoader size={30} color="#210c41" />
+            ) : (
+              commentsss.map((comment) => {
+                return +post_id === comment.post_id ? (
+                  <li
+                    className="p-2 my-2 bg-violet-800 text-violet-300 rounded-lg"
+                    key={comment.id}
+                  >
+                    {comment.content}
+                    <br />
+                    <span className="px-3 font-bold text-violet-200">
+                      {" "}
+                      - {comment.fullName}
+                    </span>
+                    {comment.user_id === userId ? (
+                      <button
+                        onClick={() => handleDelete(comment.id)}
+                        disabled={deletingComments}
+                      >
+                        <Delete size={25} />
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                  </li>
+                ) : null;
+              })
+            )}
           </ul>
         </div>
       </div>

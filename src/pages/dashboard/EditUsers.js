@@ -7,7 +7,6 @@ function EditUsers() {
   const { userId } = useParams();
   const username = blogsData.find((blog) => blog.id === parseInt(userId, 10));
   const [input, setInput] = useState(username.author);
-  console.log(userId);
 
   const handleSubmit = function (e) {
     e.preventDefault();

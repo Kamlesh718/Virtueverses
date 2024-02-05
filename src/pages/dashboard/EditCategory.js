@@ -6,7 +6,7 @@ function EditCategory() {
   const blogsData = blogs;
   const { userId } = useParams();
   const data = blogsData.find((blog) => blog.id === parseInt(userId, 10));
-  console.log(userId);
+
   const [category, setCategory] = useState(data.id);
   const [description, setDescription] = useState("");
 
@@ -21,7 +21,7 @@ function EditCategory() {
   const handleDescription = function (e) {
     setDescription(e.target.value);
   };
-  console.log(category, description);
+
   return (
     <>
       <form
