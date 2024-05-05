@@ -3,7 +3,6 @@
 
 Live Site:
 - https://virtueverses.vercel.app
-- https://virtueverses.netlify.app
 
 Welcome to the Blog Application! This application allows users to
 create, interact with posts, like, comment, update their profiles, and more.
