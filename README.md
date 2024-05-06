@@ -1,5 +1,12 @@
-# VirtueVerses
-# Blog Application
+# **VirtueVerses**
+# **Blog Application**
+
+# Login page
+![Login](https://github.com/Kamlesh718/Virtueverses/assets/91180891/c1922e21-0252-4f3c-b4c5-b8616a8ea039)
+
+# Register page
+![Register](https://github.com/Kamlesh718/Virtueverses/assets/91180891/3be8c5a0-7ad9-4be6-98b1-7fe22d838266)
+
 
 # Homepage
 ![Homepage](https://github.com/Kamlesh718/Virtueverses/assets/91180891/90d02c8b-a832-490f-a1bd-3c17b06f1887)
