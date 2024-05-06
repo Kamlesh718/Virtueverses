@@ -1,22 +1,33 @@
 # VirtueVerses
 # Blog Application
 
+# Homepage
+![Homepage](https://github.com/Kamlesh718/Virtueverses/assets/91180891/90d02c8b-a832-490f-a1bd-3c17b06f1887)
 
-![Homepage](https://github.com/Kamlesh718/Virtueverses/assets/91180891/90d02c8b-a832-490f-a1bd-3c17b06f1887) ![Blogs](https://github.com/Kamlesh718/Virtueverses/assets/91180891/83714587-fded-491d-8522-36e2c4143cbc)
+# Blogs page
+![Blogs](https://github.com/Kamlesh718/Virtueverses/assets/91180891/83714587-fded-491d-8522-36e2c4143cbc)
 
+# Singleblog page
 ![singleblog](https://github.com/Kamlesh718/Virtueverses/assets/91180891/920ce177-4b75-48e0-bbdd-5d03daf2414a)
 
+# Comments
 ![comments](https://github.com/Kamlesh718/Virtueverses/assets/91180891/873dbde2-bdaf-4f32-aaa2-1fe7ebc75c70)
 
+# About page
 ![About](https://github.com/Kamlesh718/Virtueverses/assets/91180891/07a6bd33-e063-451e-a7a8-66a26f3b5b61)
 
-**Dashboard**:
+# Dashboard
+
+# Add post page
 ![Addpost](https://github.com/Kamlesh718/Virtueverses/assets/91180891/97795eec-c95f-43dc-a286-e9100d1df257)
 
+# Manage post page
 ![Managepost](https://github.com/Kamlesh718/Virtueverses/assets/91180891/238cbaa6-fde5-4187-bbd0-0d64e2329ee0)
 
+# Edit post page
 ![Editpost](https://github.com/Kamlesh718/Virtueverses/assets/91180891/226a2831-78f3-48be-9550-fd344e7b1dea)
 
+# Profile 
 ![Profile](https://github.com/Kamlesh718/Virtueverses/assets/91180891/6c93999e-3ee2-42c8-924f-d4cfe71bff1f)
 
 
