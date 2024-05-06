@@ -2,9 +2,7 @@
 # Blog Application
 
 
-![Homepage](https://github.com/Kamlesh718/Virtueverses/assets/91180891/90d02c8b-a832-490f-a1bd-3c17b06f1887)
-
-![Blogs](https://github.com/Kamlesh718/Virtueverses/assets/91180891/83714587-fded-491d-8522-36e2c4143cbc)
+![Homepage](https://github.com/Kamlesh718/Virtueverses/assets/91180891/90d02c8b-a832-490f-a1bd-3c17b06f1887) ![Blogs](https://github.com/Kamlesh718/Virtueverses/assets/91180891/83714587-fded-491d-8522-36e2c4143cbc)
 
 ![singleblog](https://github.com/Kamlesh718/Virtueverses/assets/91180891/920ce177-4b75-48e0-bbdd-5d03daf2414a)
 
