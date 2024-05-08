@@ -1,6 +1,12 @@
 # **VirtueVerses**
 # **Blog Application**
 
+**Live Site:**
+- https://virtueverses.vercel.app
+- demo login data:
+  email: abc@gmail.com
+  password:12345678
+
 # Login page
 ![Login](https://github.com/Kamlesh718/Virtueverses/assets/91180891/c1922e21-0252-4f3c-b4c5-b8616a8ea039)
 
@@ -39,8 +45,7 @@
 
 
 
-Live Site:
-- https://virtueverses.vercel.app
+
 
 Welcome to the Blog Application! This application allows users to
 create, interact with posts, like, comment, update their profiles, and more.
